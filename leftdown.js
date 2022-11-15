@@ -140,3 +140,39 @@ chart = StackedBarChart(politifact, {
   width,
   marginLeft: 70
 })
+
+politifact = {
+
+  // A map to convert PoltiFact codes into readable names, and whether
+  // the codes represent lies (negative) or truths (positive).
+  const rulings = {
+    "pants-fire": {name: "Pants on fire!", sign: -1},
+    "false": {name: "False", sign: -1},
+    "mostly-false": {name: "Mostly false", sign: -1},
+    "barely-true": {name: "Mostly false", sign: -1}, // pessimistic
+    "half-true": {name: "Half true", sign: 1},
+    "mostly-true": {name: "Mostly true", sign: 1},
+    "true": {name: "True", sign: 1}
+  };
+
+  // The PoltiFact data includes categories we don’t want to consider (namely
+  // full-flop, which isn’t really true or false), so filter.
+  const politifact = (await FileAttachment("politifact.csv").csv())
+    .filter(d => d.ruling in rulings);
+
+  // Compute the total number of rulings for each speaker.
+  const total = d3.rollup(politifact, D => d3.sum(D, d => d.count), d => d.speaker);
+
+  // Lastly, convert the counts to signed counts (negative for lies, positive for
+  // truths), and compute the normalized counts (bias; -1 for all lies, +1 for all
+  // truths). The returned array has an extra “rulings” property which we use to
+  // see the z-domain of the chart for stable ordering and color.
+  return Object.assign(politifact.map(d => ({
+    speaker: d.speaker,
+    ruling: rulings[d.ruling].name,
+    count: d.count * rulings[d.ruling].sign,
+    proportion: d.count / total.get(d.speaker) * rulings[d.ruling].sign
+  })), {
+    rulings: [...d3.union(Object.values(rulings).map(d => d.name))]
+  });
+}
