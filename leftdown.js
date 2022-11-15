@@ -145,7 +145,7 @@ politifact = {
 
   // The PoltiFact data includes categories we don’t want to consider (namely
   // full-flop, which isn’t really true or false), so filter.
-  const politifact = (await FileAttachment("politifact.csv").csv())
+  const politifact = (await FileAttachment("https://github.com/QYH007/qyh007.github.io/blob/main/politifact.csv").csv())
     .filter(d => d.ruling in rulings);
 
   // Compute the total number of rulings for each speaker.
