@@ -1,5 +1,3 @@
-import {Swatches} from "@d3/color-legend"
-import {howto, altplot} from "@d3/example-components"
 
 
 function StackedBarChart(data, {
