@@ -1,3 +1,7 @@
+import {Swatches} from "@d3/color-legend"
+import {howto, altplot} from "@d3/example-components"
+
+
 function StackedBarChart(data, {
   x = d => d, // given d in data, returns the (quantitative) x-value
   y = (d, i) => i, // given d in data, returns the (ordinal) y-value
