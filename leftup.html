@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.5.0/pure-min.css">
+<link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
+
+<style>
+body {
+  padding: 20px;
+}
+</style>
+
+<style>
+.radar-chart .area {
+  fill-opacity: 0.7;
+}
+.radar-chart.focus .area {
+  fill-opacity: 0.3;
+}
+.radar-chart.focus .area.focused {
+  fill-opacity: 0.9;
+}
+.area.germany, .germany .circle {
+  fill: #FFD700;
+  stroke: none;
+}
+.area.argentina, .argentina .circle {
+  fill: #ADD8E6;
+  stroke: none;
+}
+</style>
+
+<script src="https://d3js.org/d3.v3.js"></script>
+<script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
+
+<script>
+RadarChart.defaultConfig.color = function() {};
+RadarChart.defaultConfig.radius = 3;
+RadarChart.defaultConfig.w = 200;
+RadarChart.defaultConfig.h = 200;
+</script>
+
+<script>
+var data = [
+  {
+    className: 'germany', // optional can be used for styling
+    axes: [
+      {axis: "HP", value: 13}, 
+      {axis: "ATK", value: 6}, 
+      {axis: "DEF", value: 5},  
+      {axis: "SP_ATK", value: 9},  
+      {axis: "SP_DEF", value: 2},
+      {axis: "Speed", value:7}
+    ]
+  },
+  {
+    className: 'argentina',
+    axes: [
+      {axis: "HP", value: 7}, 
+      {axis: "ATK", value: 2}, 
+      {axis: "DEF", value: 6},  
+      {axis: "SP_ATK", value: 7},  
+      {axis: "SP_DEF", value: 5},
+      {axis: "Speed", value:12}
+    ]
+  }
+];
+
+</script>
+
+<script>
+var chart = RadarChart.chart();
+var cfg = chart.config(); // retrieve default config
+var svg = d3.select('body').append('svg')
+  .attr('width', cfg.w + cfg.w + 50)
+  .attr('height', cfg.h + cfg.h / 4);
+svg.append('g').classed('single', 1).datum(randomDataset()).call(chart);
+
+</script>
+
+
+<h2>Simple single chart drawing</h2>
+<div class="radar1"></div>
+<script>
+RadarChart.draw(".radar1", data);
+</script>
