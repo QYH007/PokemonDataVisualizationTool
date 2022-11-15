@@ -126,3 +126,17 @@ function StackedBarChart(data, {
 
   return Object.assign(svg.node(), {scales: {color}});
 }
+
+
+chart = StackedBarChart(politifact, {
+  x: d => d.proportion,
+  y: d => d.speaker,
+  z: d => d.ruling,
+  xFormat: "+%",
+  xLabel: "← more lies · Truthiness · more truths →",
+  yDomain: d3.groupSort(politifact, D => d3.sum(D, d => -Math.min(0, d.proportion)), d => d.speaker),
+  zDomain: politifact.rulings,
+  colors: d3.schemeSpectral[politifact.rulings.length],
+  width,
+  marginLeft: 70
+})
