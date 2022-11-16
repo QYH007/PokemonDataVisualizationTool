@@ -1,17 +1,96 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-</head>
-<body>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-        <h3>
-            test
-        </h3>
-            <div id="figure" style="margin-bottom: 50px;"></div>
-            <script src="leftdown.js">
-                
-            </script>
-    </section>
-</body>
-</html>
+<meta charset="utf-8">
 
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<script>
+
+    // set the dimensions and margins of the graph
+    const margin = {top: 10, right: 30, bottom: 20, left: 50},
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    const svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+    
+    // Parse the Data
+    d3.csv("https://raw.githubusercontent.com/qyh007/qyh007.github.io/master/example.csv").then ( function(data) {
+    
+      // List of subgroups = header of the csv files = soil condition here
+      const subgroups = data.columns.slice(1)
+    
+      // List of groups = species here = value of the first column called group -> I show them on the X axis
+      const groups = data.map(d => d.group)
+    
+      // Add X axis
+      const x = d3.scaleLinear()
+          .domain([0, 100])
+        .range([0, width]);
+      svg.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        //.call(d3.axisBottom(x));
+    
+      // Add Y axis
+      const y = d3.scaleBand()
+        .domain(groups)
+          .range([ height, 0 ])
+          .padding(.1)
+      svg.append("g")
+        .call(d3.axisLeft(y).tickSizeOuter(0));
+    
+    const z = d3.scaleBand()
+        .domain(groups)
+          .range([ height, 0 ])
+          .padding(.1)
+      svg.append("g")
+        .call(d3.axisRight(z).tickSizeOuter(0));
+    
+      // color palette = one color per subgroup
+      const color = d3.scaleOrdinal()
+        .domain(subgroups)
+        .range(['#e41a1c','#377eb8'])
+    
+      // Normalize the data -> sum of each group must be 100!
+      console.log(data)
+      dataNormalized = []
+      data.forEach(function(d){
+        // Compute the total
+        tot = 0
+        for (i in subgroups){ name=subgroups[i] ; tot += +d[name] }
+        // Now normalize
+        for (i in subgroups){ name=subgroups[i] ; d[name] = d[name] / tot * 100}
+      })
+    
+      //stack the data? --> stack per subgroup
+      const stackedData = d3.stack()
+        .keys(subgroups)
+        (data)
+    
+      // Show the bars
+      svg.append("g")
+        .selectAll("g")
+        // Enter in the stack data = loop key per key = group per group
+        .data(stackedData)
+        .join("g")
+          .attr("fill", d => color(d.key))
+          .selectAll("rect")
+          // enter a second time = loop subgroup per subgroup to add all rectangles
+          .data(d => d)
+          .join("rect")
+            .attr("x", d => x(d[0]))
+            .attr("y", d => y(d.data.group))
+            .attr("z", d => 100)
+            .attr("width", d => x(d[1]) - x(d[0]))
+            .attr("height",y.bandwidth())
+    })
+    
+    </script>
