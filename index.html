@@ -14,30 +14,192 @@
     <div class="main">
       <!-- Top Left -->
       <div class="quarter-div topleft" id="topleft">
-        <div class="grid grid-cols-12  u-gap-1 u-text-center" style="height: 390px;">
-          <div class="grid-c-12 grid-r-1" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
-              <p><b>Filters</b></p>
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" style="height: 390px;">
+          <!-- select Types -->
+          <div class="grid-cs-1 grid-ce-2 grid-r-1" style="border: 1px black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="form-group">
+              <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
+              <option style="color: black;">Fire</option>
+              <option style="color: black;">Water</option>
+              <option style="color: black;">Grass</option>
+              </select>
+            </div>
           </div>
-          <div class="grid-cs-1 grid-ce-4 grid-r-12" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
-              <p><b>list</b></p>
+          <!-- select Generation -->
+          <div class="grid-cs-3 grid-ce-4 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="form-group">
+              <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
+              <option style="color: black;">1st</option>
+              <option style="color: black;">2nd</option>
+              <option style="color: black;">3rd</option>
+              </select>
+            </div>
           </div>
-          <div class="grid-cs-5 grid-ce-8 grid-r-5" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
-              <p><b>Icon</b></p>
+          <!-- select Legendary -->
+          <div class="grid-cs-5 grid-ce-6 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="form-group">
+              <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
+              <option style="color: black;">No</option>
+              <option style="color: black;">Yes</option>
+              </select>
+            </div>
           </div>
-          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
-              <p><b>pokemon name</b></p>
+          <!-- selcet sort rule -->
+          <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="form-group">
+              <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
+              <option style="color: black;">ID</option>
+              <option style="color: black;">name</option>
+              <option style="color: black;">Type</option>
+              </select>
+            </div>
           </div>
-          <div class="grid-cs-9 grid-ce-12 grid-r-10" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+          <!-- search by name -->
+          <div class="grid-cs-9 grid-ce-11 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="form-group">
+              <input type="search" class="form-group-input" placeholder="Search" style="height: 30px;"/>
+              <button class="form-group-btn" style="height: 30px;">Go</button>
+            </div>
+          </div>
+          <!-- reset -->
+          <div class="grid-cs-12 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <button style="height: 30px;display:block;margin:0 auto;justify-content:center">Reset</button>
+          </div>
+
+          <!--selecting List-->
+          <div class="grid-cs-1 grid-ce-4 grid-r-12" style="border: 1px solid black;border-radius: .125rem;">
+            <div class="row">
+              <div class="col-12">
+                  <div class="tile m-0 level">
+                    <div class="tile__icon">
+                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                    </div>
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                    </div>
+                  </div>
+                  <div class="space"></div>
+                  <div class="tile m-0 level">
+                    <div class="tile__icon">
+                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Jenelle Zaynab</p>
+                    </div>
+                  </div>
+                  <div class="space"></div>
+                  <div class="tile m-0 level">
+                    <div class="tile__icon">
+                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                    </div>
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                    </div>
+                  </div>
+                  <div class="space"></div>
+                  <div class="tile m-0 level">
+                    <div class="tile__icon">
+                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                    </div>
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                    </div>
+                  </div>
+                  <div class="space"></div>
+                  <div class="tile m-0 level">
+                    <div class="tile__icon">
+                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                    </div>
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                    </div>
+                  </div>                  
+                  <div class="space"></div>
+                  <div class="tile m-0 level">
+                    <div class="tile__icon">
+                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                    </div>
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                    </div>
+                  </div>                  
+                  <div class="space"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Icon -->
+          <div class="grid-cs-5 grid-ce-8 grid-r-4" style="border: 1px solid black;border-radius: .25rem;">
+            <p><b>Icon</b></p>
+          </div>
+          <!-- Pokemon name -->
+          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black;border-radius: .25rem;">
+            <p><b>pokemon name</b></p>
+          </div>
+          <!-- RadarChart -->
+          <div class="grid-cs-9 grid-ce-12 grid-r-10" style="border: 1px solid black;border-radius: .25rem;">
               <p><b>radarchart</b></p>
           </div>
-          <div class="grid-cs-5 grid-ce-8 grid-r-6" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
-            <p><b>grid</b></p>
+          <!-- featureShowing -->
+          <div class="grid-cs-5 grid-ce-8 grid-r-7" style="border: 1px solid black;display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr >
+                    <th><abbr style="font-size: 12px;">Type1</abbr></th>
+                    <th><abbr style="font-size: 12px;">Type2</abbr></th>
+                    <th><abbr style="font-size: 12px;">ATK</abbr></th>
+                    <th><abbr style="font-size: 12px;">DEF</abbr></th>
+                    <th><abbr style="font-size: 12px;">Speed</abbr></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-size: 12px;">
+                      <div class="tag tag--info" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">Water</div>
+                    </td>
+                    <td style="font-size: 12px;">
+                      <div class="tag tag--success" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">Grass</div>
+                    </td>
+                    <td style="font-size: 12px;">60</td>
+                    <td style="font-size: 12px;">60</td>
+                    <td style="font-size: 12px;">60</td>
+                  </tr>
+                </tbody>
+                <thead>
+                  <tr>
+                    <th><abbr style="font-size: 8px;">Generation</abbr></th>
+                    <th><abbr style="font-size: 8px;">Legendary</abbr></th>
+                    <th><abbr style="font-size: 8px;">SP_ATK</abbr></th>
+                    <th><abbr style="font-size: 8px;">SP_DEF</abbr></th>
+                    <th><abbr style="font-size: 12px;">HP</abbr></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-size: 12px;">
+                      <div class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">2nd</div>
+                    </td>
+                    <td style="font-size: 12px;">
+                      <div class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">No</div>
+                    </td>
+                    <td style="font-size: 12px;">60</td>
+                    <td style="font-size: 12px;">60</td>
+                    <td style="font-size: 12px;">60</td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
-          <div class="grid-cs-5 grid-ce-8 grid-r-1" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
-            <!-- <button>add to simulator</button> -->
-            <p><b>add to simulator</b></p>
           </div>
-          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+          <!-- botton: add to my team -->
+          <div class="grid-cs-5 grid-ce-6 grid-r-1" style="display:flex;justify-content:center;align-items:center;  border-radius: .25rem;">
+            <button style="height: 30px;margin:0 auto;justify-content:center;"> + My Team</button>
+          </div>
+          <!-- botton: add to rival team -->
+          <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <button style="height: 30px;margin:0 auto;justify-content:center;">+ Enemy </button>
+          </div>
+          <!-- showing total value -->
+          <div class="grid-cs-9 grid-ce-12 grid-r-1" style=" border-radius: .25rem;">
             <p><b>total value</b></p>
           </div>
         </div>
