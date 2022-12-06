@@ -1,26 +1,67 @@
 <!DOCTYPE html>
-<html lang="en-us" style="overflow:auto;">
   <head>
-      <title>IVDA tools on dataset Pokemon from group OK</title>
-      <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>IVDA tools on dataset Pokemon from group OK</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="cirrus.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
   </head>
+  <body>
+    <div class="main">
+      <!-- Top Left -->
+      <div class="quarter-div topleft" id="topleft">
+        <div class="grid grid-cols-12  u-gap-1 u-text-center">
+          <div class="grid-c-12 grid-r-0" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+              <p><b>Filters</b></p>
+          </div>
+          <div class="grid-c-4 grid-r-12  " style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+              <p><b>list</b></p>
+          </div>
+          <div class="grid-c-4 grid-r-6" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+              <p><b>Icon</b></p>
+          </div>
+          <div class="grid-c-4 grid-r-1" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+              <p><b>pokemon name</b></p>
+          </div>
+          <div class="grid-c-4 grid-r-12" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+              <p><b>radarchart</b></p>
+          </div>
+          <div class="grid-c-4 grid-r-6" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+            <p><b>grid</b></p>
+          </div>
+          <div class="grid-c-4" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+            <button>add to simulator</button>
+          </div>
+          <div class="grid-c-4" style="background: linear-gradient(to right, #8e2de2, #4a00e0); color: #fff; border-radius: .25rem;">
+            <p><b>total value</b></p>
+          </div>
+        </div>
+      </div>
+    
 
-  <frameset rows="5%,*"> <!--left the space of most up-->
-    <frame src="top.html" name="top" style="overflow:hidden;"></frame>
-    <frameset cols="50%,*">
-      
-      <frameset rows="50%,50%">
-        <frame src="leftup.png" name="leftup"></frame>
-        <frame src="leftdown.png" name="leftdown"></frame>
-      </frameset>
+
+      <!-- Top Right -->
+      <div class="quarter-div topright" id="topright">topright
+
+      </div>
+
+
+      <!-- Bottom Left -->
+      <div class="quarter-div bottomleft" id="bottomleft">bottomleft
+
+      </div>
+
+
+      <!-- Bottom Right -->
+      <div class="quarter-div bottomright" id="bottomright">bottomright
+
+      </div>
+
+    </div>
   
-      <frameset rows="50%,50%">
-        <frame src="rightup.html" name="rightup"></frame>
-        <frame src="rightdown.html" name="rightdown"></frame>
-      </frameset>
-          
-    </frameset>
-
-  </frameset>
-
+  </body>
 </html>
