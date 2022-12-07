@@ -15,7 +15,7 @@
     <div class="main" id="main">
       <!-- Top Left -->
       <div class="quarter-div topleft" id="topleft">
-        <div class="grid grid-cols-12  u-gap-0 u-text-center" style="height: 390px;">
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
           <!-- select Types -->
           <div class="grid-cs-1 grid-ce-2 grid-r-1" style="border: 1px black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <div class="form-group">
@@ -68,10 +68,10 @@
           </div>
 
           <!--selecting List-->
-          <div id="#List" class="grid-cs-1 grid-ce-4 grid-r-12" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
-          <div id="#List" style="height: 330px; overflow:scroll;overflow-y :yes">
-            <div id="#List" class="row">
-              <div id="#List" class="col-12">
+          <div id="grid_select_list" class="grid-cs-1 grid-ce-4 grid-r-12" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
+          <div id="list_container" style="height: 330px; overflow:scroll;overflow-y :yes">
+            <div id="row_container" class="row">
+              <div id="rows" class="col-12">
                 <!--
                   <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
                     <div class="tile__icon">
@@ -229,7 +229,10 @@
             Sp_Defs.push(csvdata.Sp_Def);
             Speeds.push(csvdata.Speed);
             Generations.push(csvdata.Generation);
-            isLegendarys.push(csvdata.isLegendary);
+            isLegendarys.push(csvdata.isLegendary); 
+            console.log(csvdata.Number)
+            console.log(csvdata.Name)
+            console.log(csvdata.Total)
             // print all pokemon defaultly
             // <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
             //         <div class="tile__icon">
@@ -239,40 +242,127 @@
             //           <p class="tile__title m-0">Squirtle</p>
             //         </div>
             // </entity>
-            listcontainer = d3.select("body").select("#main").select("#topleft").select("#List").select("#List").select("#List").select("#List");
-            IDs.forEach(element => {
-              var index = element-1;
-              img_Path = "pic/sprites/"+IDs[index]+".png";
-              Pk_Name = Names[index];
-              var entitiy = listcontainer.append("entity").classed("tile m-0 level").attr("style","border: 1px solid rgb(137, 137, 137);");
-              
-              tile_icon = entity.append("div")
-              tile_icon.classed("tile__icon")
-              tile_icon.append("img").attr("src",img_Path).attr("width","50px").attr("height","50px");
-              tile_container = entity.append("div")
-              tile_container.classed("tile__container")
-              tile_icon.append("p").classed("tile__title m-0").text(Pk_Name)
+
+            // creat list
+            var rows = d3.select("body").select("#main").select("#topleft").select("#grid_topleft").select("#grid_select_list").select("#list_container").select("#row_container").select("#rows");
+            console.log(rows)
+            var index = csvdata.Number-1;
+            img_Path = "pic/sprites/"+csvdata.Number+".png";
+            Pk_Name = csvdata.Name;
+            var entity = rows.append("entity");
+            entity.attr("class","tile m-0 level");
+            entity.attr("style","border: 1px solid rgb(137, 137, 137);");
+            
+            tile_icon = entity.insert("Eicon");
+            tile_icon.attr("class","tile__icon");
+            tile_icon.append("img").attr("src",img_Path).attr("width","50px").attr("height","50px");
+
+            tile_container = entity.append("Ename");
+            tile_container.attr("class","tile__container");
+            tile_container.append("p").attr("class","tile__title m-0").text(Pk_Name)
             });
             
-          });
+          // });
         </script>
       </div>
 
 
       <!-- Top Right -->
-      <div class="quarter-div topright" id="topright">topright
+      <div class="quarter-div topright" id="topright">
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
+          <!-- My team -->
+          <div class="grid-cs-1 grid-ce-3 grid-r-5" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>My team</b></p>
+          </div>
+          <!-- Rival team -->
+          <div class="grid-cs-4 grid-ce-6 grid-r-5" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Rival team</b></p>
+          </div>
+          <!-- Advice 1 -->
+          <div class="grid-cs-7 grid-ce-9 grid-r-5" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Advice 1</b></p>
+          </div>
+          <!-- Advice 2 -->
+          <div class="grid-cs-10 grid-ce-12 grid-r-5" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Advice 2</b></p>
+          </div>
+          <!-- Comparing Chart -->
+          <div class="grid-cs-1 grid-ce-6 grid-r-7" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Comparing Chart</b></p>
+          </div>
+          <!-- Recommedation team 1 -->
+          <div class="grid-cs-7 grid-ce-9 grid-r-7" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Recommedation team 1</b></p>
+          </div>
+          <!-- Recommedation team 2 -->
+          <div class="grid-cs-10 grid-ce-12 grid-r-7" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Recommedation team 2</b></p>
+          </div>
 
+        </div>
       </div>
 
 
       <!-- Bottom Left -->
-      <div class="quarter-div bottomleft" id="bottomleft">bottomleft
+      <div class="quarter-div bottomleft" id="bottomleft">
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
+          <!-- title -->
+          <!-- <div class="grid-cs-1 grid-ce-12 grid-r-0" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>title</b></p>
+          </div> -->
+          <!-- Icon -->
+          <div class="grid-cs-1 grid-ce-3 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Icon1</b></p>
+          </div>
+          <!-- comparing chart -->
+          <div class="grid-cs-4 grid-ce-9 grid-r-10" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>comparing chart </b></p>
+          </div>
+          <!-- Icon -->
+          <div class="grid-cs-10 grid-ce-12 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Icon2</b></p>
+          </div>
+          <!-- Pk name -->
+          <div class="grid-cs-1 grid-ce-3 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Pk1 name</b></p>
+          </div>
+          <!-- Pk name -->
+          <div class="grid-cs-10 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Pk2 name</b></p>
+          </div>
+          <!-- Features1 -->
+          <div class="grid-cs-1 grid-ce-3 grid-r-6" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Features1</b></p>
+          </div>
+          <!-- Features2 -->
+          <div class="grid-cs-10 grid-ce-12 grid-r-6" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Features2</b></p>
+          </div>
+          <!-- winrate -->
+          <div class="grid-cs-1 grid-ce-12 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>winrate</b></p>
+          </div>
 
+        </div>
       </div>
 
 
       <!-- Bottom Right -->
-      <div class="quarter-div bottomright" id="bottomright">bottomright
+      <div class="quarter-div bottomright" id="bottomright">
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
+          <!-- title -->
+          <!-- <div class="grid-cs-1 grid-ce-12 grid-r-0" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>title</b></p>
+          </div> -->
+          <!-- menu -->
+          <div class="grid-cs-1 grid-ce-3 grid-r-12" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>menu</b></p>
+          </div>
+          <!-- charts -->
+          <div class="grid-cs-4 grid-ce-12 grid-r-12" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>charts</b></p>
+          </div>
+        </div>
 
       </div>
 
