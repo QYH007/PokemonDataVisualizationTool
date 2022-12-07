@@ -4,6 +4,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/d069340472.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="cirrus.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
@@ -11,7 +12,7 @@
 
   </head>
   <body>
-    <div class="main">
+    <div class="main" id="main">
       <!-- Top Left -->
       <div class="quarter-div topleft" id="topleft">
         <div class="grid grid-cols-12  u-gap-0 u-text-center" style="height: 390px;">
@@ -67,80 +68,91 @@
           </div>
 
           <!--selecting List-->
-          <div class="grid-cs-1 grid-ce-4 grid-r-12" style="border: 1px solid black;border-radius: .125rem;">
-            <div class="row">
-              <div class="col-12">
-                  <div class="tile m-0 level">
+          <div id="#List" class="grid-cs-1 grid-ce-4 grid-r-12" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
+          <div id="#List" style="height: 330px; overflow:scroll;overflow-y :yes">
+            <div id="#List" class="row">
+              <div id="#List" class="col-12">
+                <!--
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
                     <div class="tile__icon">
-                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                        <img src="pic/sprites/001.png" width="50px" height="50px"></img>
                     </div>
                     <div class="tile__container">
-                        <p class="tile__title m-0">Jenelle Zaynab</p>
-                    </div>
+                        <p class="tile__title m-0">Bulbasaur</p>
+                    </entity>
                   </div>
-                  <div class="space"></div>
-                  <div class="tile m-0 level">
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
                     <div class="tile__icon">
-                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                      <img src="pic/sprites/002.png" width="50px" height="50px"></img>
                     </div>
                     <div class="tile__container">
-                      <p class="tile__title m-0">Jenelle Zaynab</p>
+                      <p class="tile__title m-0">Ivysaur</p>
                     </div>
-                  </div>
-                  <div class="space"></div>
-                  <div class="tile m-0 level">
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
                     <div class="tile__icon">
-                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                      <img src="pic/sprites/003.png" width="50px" height="50px"></img>
                     </div>
                     <div class="tile__container">
-                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                      <p class="tile__title m-0">Venusaur</p>
                     </div>
-                  </div>
-                  <div class="space"></div>
-                  <div class="tile m-0 level">
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
                     <div class="tile__icon">
-                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                      <img src="pic/sprites/004.png" width="50px" height="50px"></img>
                     </div>
                     <div class="tile__container">
-                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                      <p class="tile__title m-0">Charmander</p>
                     </div>
-                  </div>
-                  <div class="space"></div>
-                  <div class="tile m-0 level">
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
                     <div class="tile__icon">
-                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                      <img src="pic/sprites/005.png" width="50px" height="50px"></img>
                     </div>
                     <div class="tile__container">
-                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                      <p class="tile__title m-0">Charmeleon</p>
                     </div>
-                  </div>                  
-                  <div class="space"></div>
-                  <div class="tile m-0 level">
+                  </entity>                  
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
                     <div class="tile__icon">
-                        <figure class="avatar avatar--sm" data-text="Jz"></figure>
+                      <img src="pic/sprites/006.png" width="50px" height="50px"></img>
                     </div>
                     <div class="tile__container">
-                        <p class="tile__title m-0">Jenelle Zaynab</p>
+                      <p class="tile__title m-0">Charizard</p>
                     </div>
-                  </div>                  
-                  <div class="space"></div>
-              </div>
+                  </entity>                  
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
+                    <div class="tile__icon">
+                      <img src="pic/sprites/007.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Squirtle</p>
+                    </div>
+                  </entity>
+              </div>-->
             </div>
           </div>
+          </div>
           <!-- Icon -->
-          <div class="grid-cs-5 grid-ce-8 grid-r-4" style="border: 1px solid black;border-radius: .25rem;">
-            <p><b>Icon</b></p>
+          <div class="grid-cs-5 grid-ce-8 grid-r-7" style="display:flex;justify-content:center;align-items:center; border: 1px solid black;border-radius: .25rem;">
+            <div style="height: 180px; overflow:scroll;overflow-y :yes;">
+              <img src="pic/bulbasaur.png" width="1800px" height="180px"></img>
+            </div>
           </div>
           <!-- Pokemon name -->
-          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black;border-radius: .25rem;">
-            <p><b>pokemon name</b></p>
+          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border: 1px solid black;border-radius: .25rem;">
+            <p><b>Bulbasaur</b></p>
+          </div>
+          <!-- showing total value -->
+          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border: 1px solid black;border-radius: .25rem;">
+            <p><b>Species strength: 360</b></p>
           </div>
           <!-- RadarChart -->
           <div class="grid-cs-9 grid-ce-12 grid-r-10" style="border: 1px solid black;border-radius: .25rem;">
               <p><b>radarchart</b></p>
           </div>
           <!-- featureShowing -->
-          <div class="grid-cs-5 grid-ce-8 grid-r-7" style="border: 1px solid black;display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+          <div class="grid-cs-5 grid-ce-8 grid-r-4" style="border: 1px solid black;display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <div class="table-container">
               <table>
                 <thead>
@@ -198,13 +210,53 @@
           <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <button style="height: 30px;margin:0 auto;justify-content:center;">+ Enemy </button>
           </div>
-          <!-- showing total value -->
-          <div class="grid-cs-9 grid-ce-12 grid-r-1" style=" border-radius: .25rem;">
-            <p><b>total value</b></p>
-          </div>
         </div>
+        <script>
+          d3.dsv(",", "pokemon.csv", function(csvdata){ 
+            console.log(csvdata);
+            // read features row by row, saved in array
+            var IDs = []; var Names = []; var Type1s = []; var Type2s = []; var Totals = []; var HPs = []; var Attacks = [];
+            var Defenses = []; var Sp_Atks = []; var Sp_Defs = []; var Speeds = []; var Generations = []; var isLegendarys = [];
+            IDs.push(csvdata.Number);
+            Names.push(csvdata.Name);
+            Type1s.push(csvdata.Type_1); 
+            Type2s.push(csvdata.Type_2); 
+            Totals.push(csvdata.Total); 
+            HPs.push(csvdata.HP);
+            Attacks.push(csvdata.Attack);
+            Defenses.push(csvdata.Defense);
+            Sp_Atks.push(csvdata.Sp_Atk);
+            Sp_Defs.push(csvdata.Sp_Def);
+            Speeds.push(csvdata.Speed);
+            Generations.push(csvdata.Generation);
+            isLegendarys.push(csvdata.isLegendary);
+            // print all pokemon defaultly
+            // <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
+            //         <div class="tile__icon">
+            //           <img src="pic/sprites/007.png" width="50px" height="50px"></img>
+            //         </div>
+            //         <div class="tile__container">
+            //           <p class="tile__title m-0">Squirtle</p>
+            //         </div>
+            // </entity>
+            listcontainer = d3.select("body").select("#main").select("#topleft").select("#List").select("#List").select("#List").select("#List");
+            IDs.forEach(element => {
+              var index = element-1;
+              img_Path = "pic/sprites/"+IDs[index]+".png";
+              Pk_Name = Names[index];
+              var entitiy = listcontainer.append("entity").classed("tile m-0 level").attr("style","border: 1px solid rgb(137, 137, 137);");
+              
+              tile_icon = entity.append("div")
+              tile_icon.classed("tile__icon")
+              tile_icon.append("img").attr("src",img_Path).attr("width","50px").attr("height","50px");
+              tile_container = entity.append("div")
+              tile_container.classed("tile__container")
+              tile_icon.append("p").classed("tile__title m-0").text(Pk_Name)
+            });
+            
+          });
+        </script>
       </div>
-    
 
 
       <!-- Top Right -->
