@@ -2,6 +2,7 @@
   <head>
     <title>IVDA tools on dataset Pokemon from group OK</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="functions.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/d069340472.js" crossorigin="anonymous"></script>
@@ -17,42 +18,45 @@
       <div class="quarter-div topleft" id="topleft">
         <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
           <!-- select Types -->
-          <div class="grid-cs-1 grid-ce-2 grid-r-1" style="border: 1px black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <div class="form-group">
-              <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
-              <option style="color: black;">Fire</option><option style="color: black;">Fire</option>
-              <option style="color: black;">Water</option><option style="color: black;">Bug</option>
-              <option style="color: black;">Dark</option><option style="color: black;">Electric</option>
-              <option style="color: black;">Flying</option><option style="color: black;">Ghost</option>
-              <option style="color: black;">Ground</option><option style="color: black;">Ice</option>
-              <option style="color: black;">Normal</option><option style="color: black;">Poison</option>
-              <option style="color: black;">Psychic</option><option style="color: black;">Rock</option>
-              <option style="color: black;">Fighting</option><option style="color: black;">Dragon</option>
-              <option style="color: black;">Steel</option><option style="color: black;">Fairy</option>
+          <div class="grid-cs-1 grid-ce-2 grid-r-1" style="border: 1px black;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div id="grid_type_selector" class="form-group">
+              <select id="type_selector" class="select input--xs" placeholder="Choose one" style="overflow:visible; height: 40px; font-size: 15px;">
+              <option style="color: black;">All</option>
+              <option style="color: black;">Fire</option> <option style="color: black;">Grass</option>
+              <option style="color: black;">Water</option> <option style="color: black;">Bug</option>
+              <option style="color: black;">Dark</option> <option style="color: black;">Electric</option>
+              <option style="color: black;">Flying</option> <option style="color: black;">Ghost</option>
+              <option style="color: black;">Ground</option> <option style="color: black;">Ice</option>
+              <option style="color: black;">Normal</option> <option style="color: black;">Poison</option>
+              <option style="color: black;">Psychic</option> <option style="color: black;">Rock</option>
+              <option style="color: black;">Fighting</option> <option style="color: black;">Dragon</option>
+              <option style="color: black;">Steel</option> <option style="color: black;">Fairy</option>
               </select>
             </div>
           </div>
           <!-- select Generation -->
-          <div class="grid-cs-3 grid-ce-4 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <div class="form-group">
-              <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
-              <option style="color: black;">1st</option>
-              <option style="color: black;">2nd</option>
-              <option style="color: black;">3rd</option>
+          <div class="grid-cs-3 grid-ce-4 grid-r-1" style="justify-content:center;align-items:center; border-radius: .25rem;">
+            <div id="grid_generation_selector" class="form-group"> 
+            <select id="generation_selector" class="select input--xs" placeholder="Choose one" style="height: 40px; font-size: 12px;">
+              <option style="color: black;">All</option>
+              <option style="color: black;">1</option><option style="color: black;">2</option>
+              <option style="color: black;">3</option><option style="color: black;">4</option>
+              <option style="color: black;">5</option><option style="color: black;">6</option>
               </select>
-            </div>
+            </div> 
           </div>
           <!-- select Legendary -->
-          <div class="grid-cs-5 grid-ce-6 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <div class="form-group">
-              <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
-              <option style="color: black;">No</option>
-              <option style="color: black;">Yes</option>
+          <div id="grid_legendary_selector" class="grid-cs-5 grid-ce-7 grid-r-1" style="justify-content:center;align-items:center; border-radius: .25rem;">
+            <div id="grid_legendary_selector" class="form-group">   
+            <select id="legendary_selector"class="select input--xs" placeholder="Choose one" style="height: 40px; font-size: 12px;">
+              <option style="color: black;">All</option> 
+              <option style="color: black;">isLegendary</option>
+              <option style="color: black;">isNotLegendary</option>
               </select>
             </div>
           </div>
           <!-- selcet sort rule -->
-          <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+          <!-- <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <div class="form-group">
               <select class="select" placeholder="Choose one" style="height: 40px; font-size: 12px;">
               <option style="color: black;">ID</option>
@@ -60,18 +64,19 @@
               <option style="color: black;">Type</option>
               </select>
             </div>
-          </div>
-          <!-- search by name -->
-          <div class="grid-cs-9 grid-ce-11 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <div class="form-group">
-              <input type="search" class="form-group-input" placeholder="Search" style="height: 30px;"/>
-              <button class="form-group-btn" style="height: 30px;">Go</button>
+          </div> -->
+          <!-- search by name,reset-->
+          <div id="grid_search_group" class="grid-cs-8 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div id="form-group_search" class="form-group">
+              <input id="search_input" type="search" class="form-group-input" placeholder="Search" style="height: 30px;"/>
+              <button id= "btn_Go" class="form-group-btn" style="height: 30px;display:flex;justify-content:center;align-items:center;">Go</button>
+              <button id="btn_Reset" class="form-group-btn" style="height: 30px;display:flex;justify-content:center;align-items:center;">Reset</button>
             </div>
           </div>
-          <!-- reset -->
+          <!-- reset
           <div class="grid-cs-12 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <button style="height: 30px;display:block;margin:0 auto;justify-content:center">Reset</button>
-          </div>
+          </div> -->
 
           <!--selecting List-->
           <div id="grid_select_list" class="grid-cs-1 grid-ce-4 grid-r-12" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
@@ -91,11 +96,11 @@
           </div>
           <!-- Pokemon name -->
           <div class="grid-cs-9 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border: 1px solid black;border-radius: .25rem;">
-            <p><b>Bulbasaur</b></p>
+            <b style="display:flex;justify-content:center;align-items:center;">Bulbasaur</b>
           </div>
           <!-- showing total value -->
           <div class="grid-cs-9 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border: 1px solid black;border-radius: .25rem;">
-            <p><b>Species strength: 360</b></p>
+            <b>Species strength: 360</b>
           </div>
           <!-- RadarChart -->
           <div class="grid-cs-9 grid-ce-12 grid-r-10" style="border: 1px solid black;border-radius: .25rem;">
@@ -163,27 +168,6 @@
         </div>
         <script>
           d3.dsv(",", "pokemon.csv", function(csvdata){ 
-            console.log(csvdata);
-            // read features row by row, saved in array
-            var IDs = []; var Names = []; var Type1s = []; var Type2s = []; var Totals = []; var HPs = []; var Attacks = [];
-            var Defenses = []; var Sp_Atks = []; var Sp_Defs = []; var Speeds = []; var Generations = []; var isLegendarys = [];
-            IDs.push(csvdata.Number);
-            Names.push(csvdata.Name);
-            Type1s.push(csvdata.Type_1); 
-            Type2s.push(csvdata.Type_2); 
-            Totals.push(csvdata.Total); 
-            HPs.push(csvdata.HP);
-            Attacks.push(csvdata.Attack);
-            Defenses.push(csvdata.Defense);
-            Sp_Atks.push(csvdata.Sp_Atk);
-            Sp_Defs.push(csvdata.Sp_Def);
-            Speeds.push(csvdata.Speed);
-            Generations.push(csvdata.Generation);
-            isLegendarys.push(csvdata.isLegendary); 
-            console.log(csvdata.Number)
-            console.log(csvdata.Name)
-            console.log(csvdata.Total)
-            // print all pokemon defaultly
             // <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);">
             //         <div class="tile__icon">
             //           <img src="pic/sprites/007.png" width="50px" height="50px"></img>
@@ -212,11 +196,25 @@
             tile_container.append("p").attr("class","tile__title m-0").text(Pk_Name)
             });
             
-          // });
+        </script>
+        <script>
+          var grid = d3.select("body").select("#main").select("#topleft").select("#grid_topleft")
+          var btn_Go = grid.select("#grid_search_group").select("#form-group_search").select("#btn_Go")
+          btn_Go.on("click", function() {
+          //console.log("listened")
+          //get the selection
+          const selectedType = grid.select("#grid_type_selector").select('#type_selector option:checked').text();
+          console.log(selectedType);
+          const selectedGeneration = grid.select("#grid_generation_selector").select('#generation_selector option:checked').text();
+          console.log(selectedGeneration);
+          const selectedlegendary = grid.select("#grid_legendary_selector").select('#legendary_selector option:checked').text();
+          console.log(selectedlegendary);
+
+          recreate_list(selectedType,selectedGeneration,selectedlegendary);
+          })
         </script>
       </div>
-
-
+      
       <!-- Top Right -->
       <div class="quarter-div topright" id="topright">
         <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
