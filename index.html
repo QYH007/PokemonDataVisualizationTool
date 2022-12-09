@@ -10,13 +10,20 @@
     <link rel="stylesheet" href="cirrus.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>  
+    <link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
 
   </head>
   <body>
     <div class="main" id="main">
       <!-- Top Left -->
       <div class="quarter-div topleft" id="topleft">
-        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 400px;">
           <!-- select Types -->
           <div class="grid-cs-1 grid-ce-2 grid-r-1" style="border: 1px black;justify-content:center;align-items:center; border-radius: .25rem;">
             <div id="grid_type_selector" class="form-group">
@@ -58,7 +65,7 @@
           <!-- search by name,reset-->
           <div id="grid_search_group" class="grid-cs-8 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <div id="form-group_search" class="form-group">
-              <input id="search_input" type="search" class="form-group-input" placeholder="Search" style="height: 30px;"/>
+              <input id="search_input" type="search" class="form-group-input" placeholder="Search" style="padding:0% ;height: 30px;"/>
               <button id= "btn_Go" class="form-group-btn" style="height: 30px;display:flex;justify-content:center;align-items:center;">Go</button>
               <button id="btn_Reset" class="form-group-btn" style="height: 30px;display:flex;justify-content:center;align-items:center;">Reset</button>
             </div>
@@ -810,8 +817,8 @@
             <b id="selected_Total">Species strength: 360</b>
           </div>
           <!-- RadarChart -->
-          <div class="grid-cs-9 grid-ce-12 grid-r-10" style="border: 1px solid black;border-radius: .25rem;">
-              <p><b>radarchart</b></p>
+          <div id="grid_radar_chart" class="grid-cs-9 grid-ce-12 grid-r-9" style="display:flex;justify-content:center;align-items:center;border: 1px solid black;border-radius: .25rem;">
+              
           </div>
           <!-- featureShowing -->
           <div class="grid-cs-5 grid-ce-8 grid-r-4" style="border: 1px solid black;display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
@@ -864,20 +871,28 @@
               </table>
           </div>
           </div>
+           <!-- botton: add to comparing left -->
+           <div class="grid-cs-5 grid-ce-6 grid-r-1" style="display:flex;justify-content:center;align-items:center;  border-radius: .25rem;">
+            <button id="btn_add_to_comparing_left" style="height: 30px;margin:0 auto;justify-content:center;"> + Left</button>
+          </div>
+          <!-- botton: add to comparing right -->
+          <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <button id="btn_add_to_comparing_right" style="height: 30px;margin:0 auto;justify-content:center;">+ Right </button>
+          </div>
           <!-- botton: add to my team -->
-          <div class="grid-cs-5 grid-ce-6 grid-r-1" style="display:flex;justify-content:center;align-items:center;  border-radius: .25rem;">
-            <button style="height: 30px;margin:0 auto;justify-content:center;"> + My Team</button>
+          <div class="grid-cs-9 grid-ce-10 grid-r-1" style="display:flex;justify-content:center;align-items:center;  border-radius: .25rem;">
+            <button id="btn_add_to_my_team" style="height: 30px;margin:0 auto;justify-content:center;"> + My Team</button>
           </div>
           <!-- botton: add to rival team -->
-          <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <button style="height: 30px;margin:0 auto;justify-content:center;">+ Enemy </button>
+          <div class="grid-cs-11 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <button id="btn_add_to_rival_team" style="height: 30px;margin:0 auto;justify-content:center;">+ Enemy </button>
           </div>
         </div>
         <script>
           // add listener to all entities
           var rows = document.getElementById("rows");
           var entities = rows.getElementsByTagName("entity");
-          console.log(entities);
+          //console.log(entities);
           for (const element of entities){
             element.addEventListener('click',Show_featue);
           }
@@ -891,21 +906,10 @@
 
           btn_Go.on("click", function() {
           //console.log("listened")
-          // document.getElementById("rows")
-
-          // console.log(document.getElementById("rows"));
-          // console.log(rows.select("#one"));
-          // console.log(document.getElementById("one").getAttribute("Type_1"))
-          // rows.select("#one").attr("style","border: 1px solid rgb(137, 137, 137); display:none");
-
           //get the selection
           const selectedType = grid.select("#grid_type_selector").select('#type_selector option:checked').text();
-          console.log(selectedType);
           const selectedGeneration = grid.select("#grid_generation_selector").select('#generation_selector option:checked').text();
-          console.log(selectedGeneration);
           const selectedlegendary = grid.select("#grid_legendary_selector").select('#legendary_selector option:checked').text();
-          console.log(selectedlegendary);
-
           Recreate_list(selectedType,selectedGeneration,selectedlegendary);
           })
 
@@ -919,44 +923,103 @@
 
       <!-- Top Right -->
       <div class="quarter-div topright" id="topright">
-        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topright" style="height: 390px;">
           <!-- My team -->
-          <div class="grid-cs-1 grid-ce-4 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>My team</b></p>
+          <div class="grid-cs-1 grid-ce-4 grid-r-2" style="border: 1px solid black;display:flex; justify-content:center;align-items:center; border-radius: .25rem;">
+            <div id="grid_my_team" class="grid grid-cols-6  u-gap-1 u-text-center"  style="height: 140px;width: 180px;">
+              <div id="my_team_1" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="my_team_1_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="my_team_2" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="my_team_2_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="my_team_3" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="my_team_3_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="my_team_4" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="my_team_4_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="my_team_5" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="my_team_5_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="my_team_6" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="my_team_6_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+            </div>
           </div>
-          <!-- Rival team -->
-          <div class="grid-cs-5 grid-ce-8 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Rival team</b></p>
-          </div>
-          <!-- Advice 1 -->
-          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>filters(Select Generation?)</b></p>
-          </div>
-          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Botton(to generate the list)</b></p>
-          </div>
-          
-          <!-- Recommedation team 1 -->
-          <div class="grid-cs-9 grid-ce-12 grid-r-10" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Recommedation team 1</b></p>
-          </div>
-          <!-- Advice 2 -->
-          <!-- <div class="grid-cs-10 grid-ce-12 grid-r-5" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Advice 2</b></p>
-          </div> -->
-          <!-- Comparing Chart -->
-          <div class="grid-cs-1 grid-ce-8 grid-r-9" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Comparing Chart</b></p>
-          </div>
-          
-          <!-- Recommedation team 2 -->
-          <!-- <div class="grid-cs-10 grid-ce-12 grid-r-7" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Recommedation team 2</b></p>
-          </div> -->
 
+          <!-- Rival team -->
+          <div class="grid-cs-5 grid-ce-8 grid-r-2" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="grid grid-cols-6  u-gap-1 u-text-center" id="grid_rival_team" style="height: 140px;width: 180px;">
+              <div id="rival_team_1" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="rival_team_1_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="rival_team_2" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="rival_team_2_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="rival_team_3" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="rival_team_3_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="rival_team_4" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="rival_team_4_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="rival_team_5" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="rival_team_5_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+              <div id="rival_team_6" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="teamcontainer" id="rival_team_6_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+              </div>
+            </div>
+          </div>
+          <!-- control -->
+          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <button class="outline btn-info" style="height: 50px; width: 200px;" >Get Your Pokemon <br>Recommedation!</button>
+          </div>
+          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <label><input type="radio" name="house" checked/> 1st</label>
+            <label><input type="radio" name="house" /> 2nd</label>
+            <label><input type="radio" name="house" /> 3rd</label>
+            <br></br>
+            <label><input type="radio" name="house" /> 4th</label>
+            <label><input type="radio" name="house" /> 5th</label>
+            <label><input type="radio" name="house" /> 6th</label>
+          </div>
+
+          
+          <div class="grid-cs-1 grid-ce-8 grid-r-10" style="height: 250px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <div class="radarChart"></div>
+
+          </div>
+          <!-- Recommedation team 1 -->
+          <div class="grid-cs-9 grid-ce-12 grid-r-10" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
+            <div id="list_container" style="overflow:scroll;overflow-y :yes">
+              <div id="row_container" class="row">
+                <div id="rows" class="col-12">
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Bulbasaur" Number=1 Name="Bulbasaur" Type_1="Grass" Type_2="Poison" Total=318 HP=45 Attack=49 Defense=49 Sp_Atk=65 Sp_Def=65 Speed=45 Generation=1 isLegendary="FALSE"><div class="tile__icon"><img src="pic/sprites/1.png" width="50px" height="50px"></img></div><div class="tile__container"><p class="tile__title m-0">Bulbasaur</p></div></entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Ivysaur" Number=2 Name="Ivysaur" Type_1="Grass" Type_2="Poison" Total=405 HP=60 Attack=62 Defense=63 Sp_Atk=80 Sp_Def=80 Speed=60 Generation=1 isLegendary="FALSE"><div class="tile__icon"><img src="pic/sprites/2.png" width="50px" height="50px"></img></div><div class="tile__container"><p class="tile__title m-0">Ivysaur</p></div></entity>
+                </div>
+              </div>
+          </div>
+          </div>
         </div>
       </div>
+          <script>
+          //listen to the add to team bottons, add pokemon into lists
+          var btn_add_to_my_team = document.getElementById("btn_add_to_my_team")
+          var btn_add_to_rival_team = document.getElementById("btn_add_to_rival_team")
+          //console.log(btn_add_to_my_team);
+          btn_add_to_my_team.addEventListener("click", Add_to_my_team);
+          btn_add_to_rival_team.addEventListener("click", Add_to_rival_team);
 
+          //Add listener to all pokemon container, listen to the team list, delete pokemon from list
+          var grid_topright = document.getElementById("grid_topright");
+          var team_containers = grid_topright.getElementsByClassName("teamcontainer");
+          //console.log(team_containers);
+          for(const element of team_containers){
+            element.addEventListener("click",Delete_from_team);
+          }
+
+        </script>
 
       <!-- Bottom Left -->
       <div class="quarter-div bottomleft" id="bottomleft">
@@ -1022,6 +1085,13 @@
       </div>
 
     </div>
-  
+    <script>
+      const spawn = require('child_process').spawn;
+      const py = spawn('python3', ['test.py']);
+
+      py.stdout.on('data', function(res){
+        console.log(res);
+      })
+    </script>
   </body>
 </html>
