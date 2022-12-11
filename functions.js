@@ -595,7 +595,7 @@ function Draw_winrate_type(){
         .domain(myGroups)
         .padding(0.05);
     svg.append("g")
-        .style("font-size", 15)
+        .style("font-size", 9)
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(x).tickSize(0))
         .select(".domain").remove()
@@ -606,7 +606,7 @@ function Draw_winrate_type(){
         .domain(myVars)
         .padding(0.05);
     svg.append("g")
-        .style("font-size", 15)
+        .style("font-size", 10)
         .call(d3.axisLeft(y).tickSize(0))
         .select(".domain").remove()
 
