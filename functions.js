@@ -281,7 +281,7 @@ function Create_recommendation_list(){
 
 function Draw_type_generation_line_chart(){
     // set the dimensions and margins of the graph
-    const margin = {top: 20, right: 10, bottom: 50, left: 40},
+    const margin = {top: 40, right: 10, bottom: 50, left: 40},
         width = 550 - margin.left - margin.right,
         height = 360 - margin.top - margin.bottom;
 
@@ -342,15 +342,14 @@ function Draw_type_generation_line_chart(){
         .range([ 0, width ]);
         svg.append("g")
         .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(x).ticks(6));
+        .call(d3.axisBottom(x).ticks(6))
 
         // Add Y axis
         const y = d3.scaleLinear()
         .domain( [250,600])
         .range([ height, 0 ]);
-        svg.append("g")
-        .call(d3.axisLeft(y));
-
+        svg.append("g").call(d3.axisLeft(y))
+        
         // Add the lines
         const line = d3.line()
         .x(d => x(+d.time))
@@ -382,33 +381,20 @@ function Draw_type_generation_line_chart(){
             .attr("cy", d => y(d.value))
             .attr("r", 3)
             .style("opacity", "0.5")
-
-
-        // Add a label at the end of each line
-        svg
-        .selectAll("myLabels")
-        .data(dataReady)
-        .join('g')
-            .append("text")
-            .attr("class", d => d.name)
-            .datum(d => { return {name: d.name, value: d.values[d.values.length - 1]}; }) // keep only the last value of each time series
-            .attr("transform", d => `translate(${x(d.value.time)},${y(d.value.value)})`) // Put the text at the position of the last point
-            .attr("x", 12) // shift the text a bit more right
-            .text(d => d.name)
-            .style("fill", d => myColor(d.name))
-            .style("font-size", 8)
-
         // Add a legend (interactive)
+        dataReady1 = dataReady.slice(0,9);
+        dataReady2 = dataReady.slice(9,18);
         svg
         .selectAll("myLegend")
-        .data(dataReady)
+        .data(dataReady1)
         .join('g')
             .append("text")
-            .attr('x', (d,i) => 30 + i*60)
-            .attr('y', 30)
+            .attr('x', (d,i) => 10 + i*55)
+            .attr('y', 0)
             .text(d => d.name)
             .style("fill", d => myColor(d.name))
-            .style("font-size", 15)
+            .style("font-size", 13)
+            .style("font-weight", 900)
             .on("click", function(event,d){
             // is the element currently visible ?
             currentOpacity = d3.selectAll("." + d.name).style("opacity")
@@ -416,7 +402,29 @@ function Draw_type_generation_line_chart(){
             d3.selectAll("." + d.name).transition().style("opacity", currentOpacity == 1 ? 0.08:1)
 
             })
-        
+        svg
+        .selectAll("myLegend")
+        .data(dataReady2)
+        .join('g')
+            .append("text")
+            .attr('x', (d,i) => 10 + i*55)
+            .attr('y', 30)
+            .text(d => d.name)
+            .style("fill", d => myColor(d.name))
+            .style("font-size", 13)
+            .style("font-weight", 900)
+            .on("click", function(event,d){
+            // is the element currently visible ?
+            currentOpacity = d3.selectAll("." + d.name).style("opacity")
+            // Change the opacity: from 0 to 1 or from 1 to 0
+            d3.selectAll("." + d.name).transition().style("opacity", currentOpacity == 1 ? 0.08:1)
+            })
+        svg.append("text").text("Species Strength")
+        .attr('x',-40)
+        .attr("y",-20)
+        svg.append("text").text("Generations")
+        .attr('x',200)
+        .attr("y",310)
 }
 function Highlight_line(Type_1,Type_2){
     
@@ -632,7 +640,6 @@ function Draw_winrate_type(){
         .style("stroke", "none")
         .style("opacity", 0.8)
         .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
     })
     }
