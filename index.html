@@ -1,21 +1,20 @@
 <!DOCTYPE html>
   <head>
     <title>IVDA tools on dataset Pokemon from group OK</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="functions.js"></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="chart.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/d069340472.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="cirrus.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <script src="https://d3js.org/d3.v3.js"></script>
-    <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>  
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> 
     <link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.5.0/pure-min.css">
     <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <script src="functions.js"></script>
 
 
   </head>
@@ -797,7 +796,6 @@
                 <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Diancie" Number=719 Name="Diancie" Type_1="Rock" Type_2="Fairy" Total=600 HP=50 Attack=100 Defense=150 Sp_Atk=100 Sp_Def=150 Speed=50 Generation=6 isLegendary="TRUE"><div class="tile__icon"><img src="pic/sprites/719.png" width="50px" height="50px"></img></div><div class="tile__container"><p class="tile__title m-0">Diancie</p></div></entity>
                 <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Hoopa" Number=720 Name="Hoopa" Type_1="Psychic" Type_2="Ghost" Total=600 HP=80 Attack=110 Defense=60 Sp_Atk=150 Sp_Def=130 Speed=70 Generation=6 isLegendary="TRUE"><div class="tile__icon"><img src="pic/sprites/720.png" width="50px" height="50px"></img></div><div class="tile__container"><p class="tile__title m-0">Hoopa</p></div></entity>
                 <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE"><div class="tile__icon"><img src="pic/sprites/721.png" width="50px" height="50px"></img></div><div class="tile__container"><p class="tile__title m-0">Volcanion</p></div></entity>
-
               </div>
             </div>
           </div>
@@ -814,11 +812,11 @@
           </div>
           <!-- showing total value -->
           <div id="" class="grid-cs-9 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border: 1px solid black;border-radius: .25rem;">
-            <b id="selected_Total">Species strength: 360</b>
+            <b id="selected_Total">Species strength: 318</b>
           </div>
           <!-- RadarChart -->
           <div id="grid_radar_chart" class="grid-cs-9 grid-ce-12 grid-r-9" style="display:flex;justify-content:center;align-items:center;border: 1px solid black;border-radius: .25rem;">
-              
+            <canvas id="grid_radar_chart2" width="400" height="400"></canvas>
           </div>
           <!-- featureShowing -->
           <div class="grid-cs-5 grid-ce-8 grid-r-4" style="border: 1px solid black;display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
@@ -836,14 +834,14 @@
                 <tbody>
                   <tr>
                     <td style="font-size: 12px;">
-                      <div id="selected_Type_1" class="tag tag--info" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">Water</div>
+                      <div id="selected_Type_1" class="tag tag--Grass" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">Grass</div>
                     </td>
                     <td style="font-size: 12px;">
-                      <div id="selected_Type_2" class="tag tag--success" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">Grass</div>
+                      <div id="selected_Type_2" class="tag tag--Poison" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">Poison</div>
                     </td>
-                    <td id="selected_Attack" style="font-size: 12px;">60</td>
-                    <td id="selected_Defense"style="font-size: 12px;">60</td>
-                    <td id="selected_Speed" style="font-size: 12px;">60</td>
+                    <td id="selected_Attack" style="font-size: 12px;">49</td>
+                    <td id="selected_Defense"style="font-size: 12px;">49</td>
+                    <td id="selected_Speed" style="font-size: 12px;">45</td>
                   </tr>
                 </tbody>
                 <thead>
@@ -858,14 +856,14 @@
                 <tbody>
                   <tr>
                     <td style="font-size: 12px;">
-                      <div id="selected_Generation" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">2nd</div>
+                      <div id="selected_Generation" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">1</div>
                     </td>
                     <td style="font-size: 12px;">
-                      <div id="selected_isLegendary" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">No</div>
+                      <div id="selected_isLegendary" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">NO</div>
                     </td>
-                    <td id="selected_Sp_Atk" style="font-size: 12px;">60</td>
-                    <td id="selected_Sp_Def" style="font-size: 12px;">60</td>
-                    <td id="selected_HP" style="font-size: 12px;">60</td>
+                    <td id="selected_Sp_Atk" style="font-size: 12px;">65</td>
+                    <td id="selected_Sp_Def" style="font-size: 12px;">65</td>
+                    <td id="selected_HP" style="font-size: 12px;">45</td>
                   </tr>
                 </tbody>
               </table>
@@ -873,11 +871,11 @@
           </div>
            <!-- botton: add to comparing left -->
            <div class="grid-cs-5 grid-ce-6 grid-r-1" style="display:flex;justify-content:center;align-items:center;  border-radius: .25rem;">
-            <button id="btn_add_to_comparing_left" style="height: 30px;margin:0 auto;justify-content:center;"> + Left</button>
+            <button id="btn_add_to_comparing_left" style="height: 30px;margin:0 auto;justify-content:center;"> + VS Left</button>
           </div>
           <!-- botton: add to comparing right -->
           <div class="grid-cs-7 grid-ce-8 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <button id="btn_add_to_comparing_right" style="height: 30px;margin:0 auto;justify-content:center;">+ Right </button>
+            <button id="btn_add_to_comparing_right" style="height: 30px;margin:0 auto;justify-content:center;">+ VS Right </button>
           </div>
           <!-- botton: add to my team -->
           <div class="grid-cs-9 grid-ce-10 grid-r-1" style="display:flex;justify-content:center;align-items:center;  border-radius: .25rem;">
@@ -885,15 +883,17 @@
           </div>
           <!-- botton: add to rival team -->
           <div class="grid-cs-11 grid-ce-12 grid-r-1" style="display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <button id="btn_add_to_rival_team" style="height: 30px;margin:0 auto;justify-content:center;">+ Enemy </button>
+            <button id="btn_add_to_rival_team" style="height: 30px;margin:0 auto;justify-content:center;">+ Rival Team</button>
           </div>
         </div>
         <script>
+          Draw_radar_2([45,65,65,45,49,49],'Grass');
           // add listener to all entities
           var rows = document.getElementById("rows");
           var entities = rows.getElementsByTagName("entity");
           //console.log(entities);
           for (const element of entities){
+            // when clicked, show the selected pokemon's feature in center.
             element.addEventListener('click',Show_featue);
           }
         </script>
@@ -912,12 +912,11 @@
           const selectedlegendary = grid.select("#grid_legendary_selector").select('#legendary_selector option:checked').text();
           Recreate_list(selectedType,selectedGeneration,selectedlegendary);
           })
-
+          // waitting to be realized
           btn_Reset.on("click", function(){ 
             rows.select("#one").attr("style","border: 1px solid rgb(137, 137, 137);")
           })
         </script>
-
     </div>
 
 
@@ -928,22 +927,22 @@
           <div class="grid-cs-1 grid-ce-4 grid-r-2" style="border: 1px solid black;display:flex; justify-content:center;align-items:center; border-radius: .25rem;">
             <div id="grid_my_team" class="grid grid-cols-6  u-gap-1 u-text-center"  style="height: 140px;width: 180px;">
               <div id="my_team_1" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="my_team_1_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="my_team_1_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="my_team_2" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="my_team_2_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="my_team_2_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="my_team_3" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="my_team_3_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="my_team_3_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="my_team_4" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="my_team_4_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="my_team_4_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="my_team_5" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="my_team_5_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="my_team_5_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="my_team_6" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="my_team_6_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="my_team_6_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
             </div>
           </div>
@@ -952,51 +951,50 @@
           <div class="grid-cs-5 grid-ce-8 grid-r-2" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <div class="grid grid-cols-6  u-gap-1 u-text-center" id="grid_rival_team" style="height: 140px;width: 180px;">
               <div id="rival_team_1" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="rival_team_1_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="rival_team_1_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="rival_team_2" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="rival_team_2_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="rival_team_2_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="rival_team_3" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="rival_team_3_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="rival_team_3_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="rival_team_4" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="rival_team_4_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="rival_team_4_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="rival_team_5" class="grid-cs-3 grid-ce-4 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="rival_team_5_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="rival_team_5_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
               <div id="rival_team_6" class="grid-cs-5 grid-ce-6 grid-r-3" style="height: 60px;width: 60px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-                <img class="teamcontainer" id="rival_team_6_icon" src="pic/plus.png" width="60px" height="60px" Name=""></img>
+                <img class="teamcontainer" id="rival_team_6_icon" src="pic/plus.png" width="30px" height="30px" Name=""></img>
               </div>
             </div>
           </div>
           <!-- control -->
           <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <button class="outline btn-info" style="height: 50px; width: 200px;" >Get Your Pokemon <br>Recommedation!</button>
+            <button id="btn_get_recommendation"class="outline btn-info" style="height: 50px; width: 200px;" >Get Your Dream <br>Team!</button>
           </div>
-          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <label><input type="radio" name="house" checked/> 1st</label>
+          <div class="grid-cs-9 grid-ce-12 grid-r-1" style="overflow-x: scroll; border: 1px solid black; display:flex;align-items:center; border-radius: .25rem;">
+            <label><input type="radio" name="house" checked/> All</label>
+            <label><input type="radio" name="house" /> 1st</label>
             <label><input type="radio" name="house" /> 2nd</label>
             <label><input type="radio" name="house" /> 3rd</label>
-            <br></br>
             <label><input type="radio" name="house" /> 4th</label>
             <label><input type="radio" name="house" /> 5th</label>
             <label><input type="radio" name="house" /> 6th</label>
           </div>
 
-          
-          <div class="grid-cs-1 grid-ce-8 grid-r-10" style="height: 250px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <div class="radarChart"></div>
-
+          <!-- comparing radarChart -->
+          <div id="grid_comparing_radar_chart" class="grid-cs-1 grid-ce-8 grid-r-10" style="height: 250px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <canvas id="comparing_radar_chart"  width="200" height="200" ></canvas>
           </div>
-          <!-- Recommedation team 1 -->
+
+          <!-- Recommedation team -->
           <div class="grid-cs-9 grid-ce-12 grid-r-10" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
-            <div id="list_container" style="overflow:scroll;overflow-y :yes">
+            <div id="list_container" style="height:240px;overflow:scroll;overflow-y :yes">
               <div id="row_container" class="row">
-                <div id="rows" class="col-12">
-                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Bulbasaur" Number=1 Name="Bulbasaur" Type_1="Grass" Type_2="Poison" Total=318 HP=45 Attack=49 Defense=49 Sp_Atk=65 Sp_Def=65 Speed=45 Generation=1 isLegendary="FALSE"><div class="tile__icon"><img src="pic/sprites/1.png" width="50px" height="50px"></img></div><div class="tile__container"><p class="tile__title m-0">Bulbasaur</p></div></entity>
-                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Ivysaur" Number=2 Name="Ivysaur" Type_1="Grass" Type_2="Poison" Total=405 HP=60 Attack=62 Defense=63 Sp_Atk=80 Sp_Def=80 Speed=60 Generation=1 isLegendary="FALSE"><div class="tile__icon"><img src="pic/sprites/2.png" width="50px" height="50px"></img></div><div class="tile__container"><p class="tile__title m-0">Ivysaur</p></div></entity>
+                <div id="recommendation_rows" class="col-12">
+
                 </div>
               </div>
           </div>
@@ -1007,86 +1005,291 @@
           //listen to the add to team bottons, add pokemon into lists
           var btn_add_to_my_team = document.getElementById("btn_add_to_my_team")
           var btn_add_to_rival_team = document.getElementById("btn_add_to_rival_team")
-          //console.log(btn_add_to_my_team);
+          
           btn_add_to_my_team.addEventListener("click", Add_to_my_team);
           btn_add_to_rival_team.addEventListener("click", Add_to_rival_team);
 
           //Add listener to all pokemon container, listen to the team list, delete pokemon from list
           var grid_topright = document.getElementById("grid_topright");
           var team_containers = grid_topright.getElementsByClassName("teamcontainer");
-          //console.log(team_containers);
+          
           for(const element of team_containers){
             element.addEventListener("click",Delete_from_team);
           }
 
+          // Add listener to get recommedation button, te create the recommendation list
+          var btn_get_recommendation = document.getElementById("btn_get_recommendation")
+          btn_get_recommendation.addEventListener("click", Create_recommendation_list);
         </script>
+        
 
       <!-- Bottom Left -->
       <div class="quarter-div bottomleft" id="bottomleft">
-        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_bottomleft" style="height: 390px;">
           <!-- title -->
           <!-- <div class="grid-cs-1 grid-ce-12 grid-r-0" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
             <p><b>title</b></p>
           </div> -->
           <!-- Icon -->
           <div class="grid-cs-1 grid-ce-3 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Icon1</b></p>
+          <!-- Icon left FIN-->  
+            
+              <div id="compare_left" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 140px;width: 140px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="comparingcontainer" id="compare_left_icon" src="pic/default.png" width="140px" height="140px" Name=""></img>
+              </div>
+            
           </div>
           <!-- comparing chart -->
-          <div class="grid-cs-4 grid-ce-9 grid-r-10" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>comparing chart </b></p>
+          <div id="draw_compare_chart" class="grid-cs-4 grid-ce-9 grid-r-10" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <canvas id="grid_compare_chart"></canvas>
           </div>
           <!-- Icon -->
           <div class="grid-cs-10 grid-ce-12 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Icon2</b></p>
+            <!-- Icon right FIN-->
+            
+              <div id="compare_right" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 140px;width: 140px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+                <img class="comparingcontainer" id="compare_right_icon" src="pic/default.png" width="140px" height="140px" Name=""></img>
+              </div>
+            
           </div>
-          <!-- Pk name -->
+          <!-- Pk name FIN-->
           <div class="grid-cs-1 grid-ce-3 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Pk1 name</b></p>
+            
+              <b id="pokemon_left_Name" style="display:flex;justify-content:center;align-items:center;">TO BE SELECTED</b>
+
           </div>
-          <!-- Pk name -->
+          <!-- Pk name FIN-->
           <div class="grid-cs-10 grid-ce-12 grid-r-1" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Pk2 name</b></p>
+            
+            <b id="pokemon_right_Name" style="display:flex;justify-content:center;align-items:center;">TO BE SELECTED</b>
+
           </div>
           <!-- Features1 -->
           <div class="grid-cs-1 grid-ce-3 grid-r-6" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Features1</b></p>
+            <div class="grid-cs-5 grid-ce-8 grid-r-4" style="border: 1px solid black;display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr >
+                      <th><abbr style="font-size: 12px;">Type1</abbr></th>
+                      <th><abbr style="font-size: 12px;">Type2</abbr></th>
+                      <th><abbr style="font-size: 12px;">ATK</abbr></th>
+                      <th><abbr style="font-size: 12px;">DEF</abbr></th>
+                      <th><abbr style="font-size: 12px;">Speed</abbr></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_left_Type_1" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">-</div>
+                      </td>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_left_Type_2" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">-</div>
+                      </td>
+                      <td id="pokemon_left_Attack" style="font-size: 12px;">-</td>
+                      <td id="pokemon_left_Defense"style="font-size: 12px;">-</td>
+                      <td id="pokemon_left_Speed" style="font-size: 12px;">-</td>
+                    </tr>
+                  </tbody>
+                  <thead>
+                    <tr>
+                      <th><abbr style="font-size: 8px;">Gen</abbr></th>
+                      <th><abbr style="font-size: 8px;">Leg</abbr></th>
+                      <th><abbr style="font-size: 8px;">SP_ATK</abbr></th>
+                      <th><abbr style="font-size: 8px;">SP_DEF</abbr></th>
+                      <th><abbr style="font-size: 12px;">HP</abbr></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_left_Generation" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">-</div>
+                      </td>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_left_isLegendary" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">-</div>
+                      </td>
+                      <td id="pokemon_left_Sp_Atk" style="font-size: 12px;">-</td>
+                      <td id="pokemon_left_Sp_Def" style="font-size: 12px;">-</td>
+                      <td id="pokemon_left_HP" style="font-size: 12px;">-</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            </div>
           </div>
           <!-- Features2 -->
           <div class="grid-cs-10 grid-ce-12 grid-r-6" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>Features2</b></p>
+            <div class="grid-cs-5 grid-ce-8 grid-r-4" style="border: 1px solid black;display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr >
+                      <th><abbr style="font-size: 12px;">Type1</abbr></th>
+                      <th><abbr style="font-size: 12px;">Type2</abbr></th>
+                      <th><abbr style="font-size: 12px;">ATK</abbr></th>
+                      <th><abbr style="font-size: 12px;">DEF</abbr></th>
+                      <th><abbr style="font-size: 12px;">Speed</abbr></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_right_Type_1" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">-</div>
+                      </td>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_right_Type_2" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;">-</div>
+                      </td>
+                      <td id="pokemon_right_Attack" style="font-size: 12px;">-</td>
+                      <td id="pokemon_right_Defense"style="font-size: 12px;">-</td>
+                      <td id="pokemon_right_Speed" style="font-size: 12px;">-</td>
+                    </tr>
+                  </tbody>
+                  <thead>
+                    <tr>
+                      <th><abbr style="font-size: 8px;">Gen</abbr></th>
+                      <th><abbr style="font-size: 8px;">Leg</abbr></th>
+                      <th><abbr style="font-size: 8px;">SP_ATK</abbr></th>
+                      <th><abbr style="font-size: 8px;">SP_DEF</abbr></th>
+                      <th><abbr style="font-size: 12px;">HP</abbr></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_right_Generation" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">-</div>
+                      </td>
+                      <td style="font-size: 12px;">
+                        <div id="pokemon_right_isLegendary" class="tag" style="margin:0 auto;justify-content:center;width: 50px;height: 20px;color: black;">-</div>
+                      </td>
+                      <td id="pokemon_right_Sp_Atk" style="font-size: 12px;">-</td>
+                      <td id="pokemon_right_Sp_Def" style="font-size: 12px;">-</td>
+                      <td id="pokemon_right_HP" style="font-size: 12px;">-</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            </div>
           </div>
           <!-- winrate -->
           <div class="grid-cs-1 grid-ce-12 grid-r-3" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>winrate</b></p>
+            <p><b>predict winner ---  </b></p>
+            
+            <div id="winrate" class="grid-cs-1 grid-ce-2 grid-r-3" style="height: 80px;width: 80px; border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+              <img class="wincontainer" id="winrate_icon" src="pic/default.png" width="80px" height="80px" Name=""></img>
+            </div>
+
+            <div id="draw_winrate_chart" class="grid-cs-1 grid-ce-2 grid-r-3" style="display:flex;justify-content:center;align-items:center;border: 1px solid black;border-radius: .25rem;">
+              <canvas id="grid_winrate_chart" width="200px" height="40px"></canvas>
+              
+            </div>
           </div>
 
         </div>
       </div>
+      <script>
+        //listen to the add to left bottons, add pokemon into lists
+        var btn_add_to_comparing_left = document.getElementById("btn_add_to_comparing_left")
+        var btn_add_to_comparing_right = document.getElementById("btn_add_to_comparing_right")
+        //console.log(btn_add_to_my_team);
+        btn_add_to_comparing_left.addEventListener("click", Add_to_comparing_left);
+        btn_add_to_comparing_right.addEventListener("click", Add_to_comparing_right);
 
+        // //Add listener to all pokemon container, listen to the team list, delete pokemon from list
+        // var grid_bottomleft = document.getElementById("grid_bottomleft");
+        // var comparing_containers = grid_bottomleft.getElementsByClassName("comparingcontainer");
+        // //console.log(team_containers);
+        // for(const element of comparing_containers){
+        //   element.addEventListener("click",Delete_from_comparing);
+        // }
+
+      </script>
 
       <!-- Bottom Right -->
       <div class="quarter-div bottomright" id="bottomright">
-        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_topleft" style="height: 390px;">
-          <!-- title -->
-          <!-- <div class="grid-cs-1 grid-ce-12 grid-r-0" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>title</b></p>
-          </div> -->
-          <!-- menu -->
-          <div class="grid-cs-1 grid-ce-3 grid-r-12" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>menu</b></p>
+        <div class="grid grid-cols-12  u-gap-0 u-text-center" id="grid_bottomright" style="height: 390px;">
+          <div class="grid-cs-1 grid-ce-3 grid-r-1" style="height: 30px;border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <p><b>Visualization Sets</b></p>
           </div>
           <!-- charts -->
-          <div class="grid-cs-4 grid-ce-12 grid-r-12" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
-            <p><b>charts</b></p>
+          <div id = "grid_visualization_container"class="grid-cs-4 grid-ce-12 grid-r-12" style="border: 1px solid black; display:flex;justify-content:center;align-items:center; border-radius: .25rem;">
+            <vis id="generation_type"></vis>
+            <vis id = "winrate_type" style="display: none;">
+              <div id="winrateinfo" style="font-size: 14px; "></div>
+            </vis>
           </div>
+          <!-- menu -->
+          <div class="grid-cs-1 grid-ce-3 grid-r-11" style="height: 360px;border: 1px solid black; align-items:center; border-radius: .25rem;">
+            <div style="height:390px;overflow:scroll;overflow-y :yes">
+              <div class="row">
+                <div id = "chart_selection_container" class="col-12">
+                  <entity id = "selection_generation_type" class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                    <div class="tile__container">
+                        <p class="tile__title m-0" style="font-size: 13px;">Species Strength <br>over Generation in Types</p>
+                    </div>
+                  </entity>
+                  <entity id = "selection_winrate_type" class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                    <div class="tile__container">
+                        <p class="tile__title m-0">win rate <br>between types</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Distribution of Species Strength</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Distributions of Statistic</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Distributions of Pokemon Numbers</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                    <div class="tile__container">
+                        <p class="tile__title m-0">Distributions of Legendary pokemons</p>
+                    </div>
+                  </entity>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
+      <script>
+        const WIDTH = window.innerWidth
+        const HEIGHT = window.innerHeight
 
+        document.getElementById("grid_topleft").setAttribute("style","height:"+HEIGHT/2+"px")
+        document.getElementById("grid_topright").setAttribute("style","height:"+HEIGHT/2+"px")
+        document.getElementById("grid_bottomright").setAttribute("style","height:"+HEIGHT/2+"px")
+        document.getElementById("grid_bottomleft").setAttribute("style","height:"+HEIGHT/2+"px")
+        
+      </script>
+      </div>
+
+
+
+      <script>
+        Draw_type_generation_line_chart();
+        d3.selectAll(".Poison").transition().style("opacity", "1");
+        d3.selectAll(".Grass").transition().style("opacity", "1");
+        Draw_winrate_type();
+      </script>
+      <script>
+        // add listener to all chart selection
+        var rows = document.getElementById("chart_selection_container");
+        var entities = rows.getElementsByTagName("entity");
+        for (const element of entities){
+          // when clicked, show the selected chart, disable other charts at the same time.
+          element.addEventListener('click',Change_visualization);
+        }
+      </script>
     </div>
-    <script>
 
-    </script>
   </body>
 </html>

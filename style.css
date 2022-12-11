@@ -20,10 +20,10 @@
     background-color: #dcfedc;
 }
 .bottomleft{
-    background-color: #F0AD4E;
+    background-color: #fdfdfd;
 }
 .bottomright{
-    background-color: #FFC706;
+    background-color: #fff5d3;
 } 
 
 
@@ -39,74 +39,92 @@
 }
 .area.Grass, .Grass .circle {
   fill: #09d041;
+  fill: rgba(21, 198, 47);
   stroke: none;
 }
 .area.Fire, .Fire .circle {
   fill: #d43a13;
+  fill: rgb(203, 29, 29);
   stroke: none;
 }
 .area.Water, .Water .circle {
   fill: #287feb;
+  fill: rgb(57, 109, 228);
   stroke: none;
 }
 .area.Bug, .Bug .circle {
   fill: #7fbb2a;
+  fill: rgb(109, 175, 17);
   stroke: none;
 }
 .area.Normal, .Normal .circle {
   fill: #8f8d86;
+  fill: rgb(134, 130, 119);
   stroke: none;
 }
 .area.Poison, .Poison .circle {
   fill: #8c14c3;
+  fill: rgb(148, 22, 198);
   stroke: none;
 }
 .area.Electric, .Electric .circle {
   fill: #ffd700;
+  fill: rgb(255, 221, 0);
   stroke: none;
 }
 .area.Ground, .Ground .circle {
   fill: #af5810;
+  fill: rgb(188, 83, 12);
   stroke: none;
 }
 .area.Fairy, .Fairy .circle {
   fill: #ef5be6;
+  fill: rgb(237, 61, 220);
   stroke: none;
 }
 .area.Fighting, .Fighting .circle {
   fill: #ed7804;
+  fill: rgb(237, 112, 17);
   stroke: none;
 }
 .area.Psychic, .Psychic .circle {
   fill: #be0d6b;
+  fill: rgb(215, 19, 104);
   stroke: none;
 }
 .area.Rock, .Rock .circle {
   fill: #9e966d;
+  fill: rgb(175, 161, 132);
   stroke: none;
 }
 .area.Ghost, .Ghost .circle {
   fill: #67077d;
+  fill: rgb(113, 11, 118);
   stroke: none;
 }
 .area.Ice, .Ice .circle {
   fill: #85e5ee;
+  fill: rgb(111, 212, 210);
   stroke: none;
 }
 .area.Dragon, .Dragon .circle {
   fill: #2e22cc;
+  fill: rgb(50, 17, 213);
   stroke: none;
 }
 .area.Dark, .Dark .circle {
   fill: #211b0c;
+  fill: rgb(48, 40, 40);
   stroke: none;
 }
 .area.Steel, .Steel .circle {
   fill: #32b7b2;
+  fill: rgb(31, 170, 189);
   stroke: none;
 }
 .area.Flying, .Flying .circle {
   fill: #68e0fe;
+  fill: rgb(115, 212, 231);
   stroke: none;
 }
 
