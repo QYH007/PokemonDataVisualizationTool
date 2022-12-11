@@ -1,5 +1,5 @@
 group,variable,value
-Bug,Bug,0.468
+Bug,Bug,0.5
 Bug,Dark,0.487
 Bug,Dragon,0.429
 Bug,Electric,0.542
@@ -18,7 +18,7 @@ Bug,Rock,0.447
 Bug,Steel,0.585
 Bug,Water,0.490
 Dark,Bug,0.513
-Dark,Dark,0.387
+Dark,Dark,0.5
 Dark,Dragon,0.393
 Dark,Electric,0.529
 Dark,Fairy,0.543
@@ -37,7 +37,7 @@ Dark,Steel,0.586
 Dark,Water,0.429
 Dragon,Bug,0.468
 Dragon,Dark,0.623
-Dragon,Dragon,0.455
+Dragon,Dragon,0.5
 Dragon,Electric,0.538
 Dragon,Fairy,0.645
 Dragon,Fighting,0.590
@@ -56,7 +56,7 @@ Dragon,Water,0.568
 Electric,Bug,0.469
 Electric,Dark,0.389
 Electric,Dragon,0.397
-Electric,Electric,0.474
+Electric,Electric,0.5
 Electric,Fairy,0.391
 Electric,Fighting,0.517
 Electric,Fire,0.504
@@ -75,7 +75,7 @@ Fairy,Bug,0.389
 Fairy,Dark,0.341
 Fairy,Dragon,0.344
 Fairy,Electric,0.220
-Fairy,Fairy,0.333
+Fairy,Fairy,0.5
 Fairy,Fighting,0.333
 Fairy,Fire,0.329
 Fairy,Flying,0.250
@@ -94,7 +94,7 @@ Fighting,Dark,0.415
 Fighting,Dragon,0.365
 Fighting,Electric,0.455
 Fighting,Fairy,0.560
-Fighting,Fighting,0.410
+Fighting,Fighting,0.5
 Fighting,Fire,0.524
 Fighting,Flying,0.200
 Fighting,Ghost,0.375
@@ -113,7 +113,7 @@ Fire,Dragon,0.315
 Fire,Electric,0.397
 Fire,Fairy,0.419
 Fire,Fighting,0.451
-Fire,Fire,0.430
+Fire,Fire,0.5
 Fire,Flying,0.385
 Fire,Ghost,0.365
 Fire,Grass,0.479
@@ -151,7 +151,7 @@ Ghost,Fairy,0.594
 Ghost,Fighting,0.545
 Ghost,Fire,0.595
 Ghost,Flying,0.600
-Ghost,Ghost,0.543
+Ghost,Ghost,0.50
 Ghost,Grass,0.545
 Ghost,Ground,0.567
 Ghost,Ice,0.452
@@ -170,7 +170,7 @@ Grass,Fighting,0.444
 Grass,Fire,0.496
 Grass,Flying,0.278
 Grass,Ghost,0.371
-Grass,Grass,0.501
+Grass,Grass,0.500
 Grass,Ground,0.438
 Grass,Ice,0.480
 Grass,Normal,0.412
@@ -189,7 +189,7 @@ Ground,Fire,0.523
 Ground,Flying,0.556
 Ground,Ghost,0.414
 Ground,Grass,0.433
-Ground,Ground,0.433
+Ground,Ground,0.500
 Ground,Ice,0.431
 Ground,Normal,0.491
 Ground,Poison,0.317
@@ -208,7 +208,7 @@ Ice,Flying,0.500
 Ice,Ghost,0.390
 Ice,Grass,0.472
 Ice,Ground,0.391
-Ice,Ice,0.419
+Ice,Ice,0.500
 Ice,Normal,0.464
 Ice,Poison,0.529
 Ice,Psychic,0.400
@@ -227,7 +227,7 @@ Normal,Ghost,0.494
 Normal,Grass,0.494
 Normal,Ground,0.464
 Normal,Ice,0.474
-Normal,Normal,0.465
+Normal,Normal,0.500
 Normal,Poison,0.428
 Normal,Psychic,0.491
 Normal,Rock,0.469
@@ -246,7 +246,7 @@ Poison,Grass,0.519
 Poison,Ground,0.644
 Poison,Ice,0.556
 Poison,Normal,0.446
-Poison,Poison,0.620
+Poison,Poison,0.500
 Poison,Psychic,0.530
 Poison,Rock,0.513
 Poison,Steel,0.674
@@ -265,7 +265,7 @@ Psychic,Ground,0.405
 Psychic,Ice,0.525
 Psychic,Normal,0.350
 Psychic,Poison,0.402
-Psychic,Psychic,0.456
+Psychic,Psychic,0.500
 Psychic,Rock,0.447
 Psychic,Steel,0.486
 Psychic,Water,0.392
@@ -284,7 +284,7 @@ Rock,Ice,0.580
 Rock,Normal,0.508
 Rock,Poison,0.483
 Rock,Psychic,0.562
-Rock,Rock,0.535
+Rock,Rock,0.500
 Rock,Steel,0.645
 Rock,Water,0.474
 Steel,Bug,0.333
@@ -303,7 +303,7 @@ Steel,Normal,0.380
 Steel,Poison,0.296
 Steel,Psychic,0.449
 Steel,Rock,0.317
-Steel,Steel,0.357
+Steel,Steel,0.500
 Steel,Water,0.381
 Water,Bug,0.502
 Water,Dark,0.493
@@ -322,4 +322,4 @@ Water,Poison,0.438
 Water,Psychic,0.529
 Water,Rock,0.452
 Water,Steel,0.630
-Water,Water,0.470
+Water,Water,0.500
