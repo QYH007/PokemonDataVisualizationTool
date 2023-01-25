@@ -1216,6 +1216,12 @@
             <vis id = "winrate_type" style="display: none;">
               <div id="winrateinfo" style="font-size: 14px; "></div>
             </vis>
+            <vis id = "grid_distribution_of_pokemon_numbers" style="display: none;">
+              <canvas id="pokemon_numbers" width="0" height="0"></canvas>
+            </vis>
+            <vis id = "grid_distribution_of_legendary" style="display: none;">
+              <canvas id="pokemon_numbers" width="0" height="0"></canvas>
+            </vis>
           </div>
           <!-- menu -->
           <div class="grid-cs-1 grid-ce-3 grid-r-11" style="height: 360px;border: 1px solid black; align-items:center; border-radius: .25rem;">
@@ -1232,22 +1238,13 @@
                         <p class="tile__title m-0">win rate <br>between types</p>
                     </div>
                   </entity>
-                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
-                    <div class="tile__container">
-                        <p class="tile__title m-0">Distribution of Species Strength</p>
-                    </div>
-                  </entity>
-                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
-                    <div class="tile__container">
-                        <p class="tile__title m-0">Distributions of Statistic</p>
-                    </div>
-                  </entity>
-                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                  <entity id = "selection_grid_distribution_of_pokemon_numbers" class="tile m-0 level" style= "border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
                     <div class="tile__container">
                         <p class="tile__title m-0">Distributions of Pokemon Numbers</p>
                     </div>
                   </entity>
-                  <entity class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
+                  
+                  <entity id = "selection_grid_distribution_of_legendary" class="tile m-0 level" style=" border: 1px solid rgb(137, 137, 137);" id="Volcanion" Number=721 Name="Volcanion" Type_1="Fire" Type_2="Water" Total=600 HP=80 Attack=110 Defense=120 Sp_Atk=130 Sp_Def=90 Speed=70 Generation=6 isLegendary="TRUE">
                     <div class="tile__container">
                         <p class="tile__title m-0">Distributions of Legendary pokemons</p>
                     </div>
@@ -1279,6 +1276,8 @@
         d3.selectAll(".Poison").transition().style("opacity", "1");
         d3.selectAll(".Grass").transition().style("opacity", "1");
         Draw_winrate_type();
+        load_data_and_draw_distribution();
+        load_data_and_draw_legendary();
       </script>
       <script>
         // add listener to all chart selection

@@ -644,7 +644,7 @@ function Draw_winrate_type(){
     })
     }
 
-    function Change_visualization(){
+function Change_visualization(){
         var selection_id = this.getAttribute("id");
         var rows = document.getElementById("grid_visualization_container");
         var entities = rows.getElementsByTagName("vis");
@@ -653,6 +653,9 @@ function Draw_winrate_type(){
             
             if (("selection_"+vis_id) == selection_id){
                 element.setAttribute("style","");
+                load_data_and_draw_distribution();
+                load_data_and_draw_legendary();
+                //console.log(entities);
             }
             else{
                 element.setAttribute("style","display: none");
@@ -1069,4 +1072,96 @@ function Delete_from_comparing(){
     //Redraw_comparing_chart();
     // Record the name of the pokemon
     
+}
+
+function load_data_and_draw_distribution(){
+    var svg=d3.select("#grid_distribution_of_pokemon_numbers");
+    svg.select('canvas').remove();
+    svg.append('canvas')
+            .attr('id','pokemon_numbers')
+            .attr('width',500)
+            .attr('height',400);
+
+    d3.csv("number.csv")
+  .then(Draw_distribution_of_pokemon_numbers);
+}
+
+function Draw_distribution_of_pokemon_numbers(types){
+
+    const ctx = document.getElementById("pokemon_numbers");
+
+    var typesLabels = types.map(function(d) {return d.Type});
+    var typesData = types.map(function(d) {return d.Total});
+
+    var newchart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: typesLabels,
+      datasets: [
+        {
+          data: typesData
+        }
+      ]
+    },
+    options: {
+        plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Pokemon Numbers'
+        }
+        }
+      },
+  });
+
+    console.log(typesLabels);
+
+}
+
+function load_data_and_draw_legendary(){
+    var svg=d3.select("#grid_distribution_of_legendary");
+    svg.select('canvas').remove();
+    svg.append('canvas')
+            .attr('id','pokemon_legendary')
+            .attr('width',500)
+            .attr('height',400);
+
+    d3.csv("legendary.csv")
+  .then(Draw_distribution_of_pokemon_legendary);
+}
+
+function Draw_distribution_of_pokemon_legendary(types){
+
+    const ctx = document.getElementById("pokemon_legendary");
+
+    var typesLabels = types.map(function(d) {return d.Type});
+    var typesData = types.map(function(d) {return d.Total});
+
+    var newchart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: typesLabels,
+      datasets: [
+        {
+          data: typesData
+        }
+      ]
+    },
+    options: {
+        plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Number of legendary'
+        }
+        }
+      },
+  });
+
+    console.log(typesLabels);
+
 }
