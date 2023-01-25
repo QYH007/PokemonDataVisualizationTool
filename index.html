@@ -27,7 +27,7 @@
           <div class="grid-cs-1 grid-ce-2 grid-r-1" style="border: 1px black;justify-content:center;align-items:center; border-radius: .25rem;">
             <div id="grid_type_selector" class="form-group">
               <select id="type_selector" class="select input--xs" placeholder="Choose one" style="overflow:visible; height: 40px; font-size: 15px;">
-              <option style="color: black;">All</option>
+              <option id="type_ALL" style="color: black;">All</option>
               <option style="color: black;">Fire</option> <option style="color: black;">Grass</option>
               <option style="color: black;">Water</option> <option style="color: black;">Bug</option>
               <option style="color: black;">Dark</option> <option style="color: black;">Electric</option>
@@ -44,7 +44,7 @@
           <div class="grid-cs-3 grid-ce-4 grid-r-1" style="justify-content:center;align-items:center; border-radius: .25rem;">
             <div id="grid_generation_selector" class="form-group"> 
             <select id="generation_selector" class="select input--xs" placeholder="Choose one" style="height: 40px; font-size: 12px;">
-              <option style="color: black;">All</option>
+              <option id="generation_ALL" style="color: black;">All</option>
               <option style="color: black;">1</option><option style="color: black;">2</option>
               <option style="color: black;">3</option><option style="color: black;">4</option>
               <option style="color: black;">5</option><option style="color: black;">6</option>
@@ -55,7 +55,7 @@
           <div id="grid_legendary_selector" class="grid-cs-5 grid-ce-7 grid-r-1" style="justify-content:center;align-items:center; border-radius: .25rem;">
             <div id="grid_legendary_selector" class="form-group">   
             <select id="legendary_selector"class="select input--xs" placeholder="Choose one" style="height: 40px; font-size: 12px;">
-              <option style="color: black;">All</option> 
+              <option id="legendary_ALL" style="color: black;">All</option> 
               <option style="color: black;">isLegendary</option>
               <option style="color: black;">isNotLegendary</option>
               </select>
@@ -910,11 +910,17 @@
           const selectedType = grid.select("#grid_type_selector").select('#type_selector option:checked').text();
           const selectedGeneration = grid.select("#grid_generation_selector").select('#generation_selector option:checked').text();
           const selectedlegendary = grid.select("#grid_legendary_selector").select('#legendary_selector option:checked').text();
-          Recreate_list(selectedType,selectedGeneration,selectedlegendary);
+          //const selectedword = grid.select("#grid_search_group").select('#form-group_search').select('#search_input').text();
+          const selectedword = document.getElementById("search_input").value;
+          
+          Recreate_list(selectedType,selectedGeneration,selectedlegendary,selectedword);
           })
           // waitting to be realized
           btn_Reset.on("click", function(){ 
-            rows.select("#one").attr("style","border: 1px solid rgb(137, 137, 137);")
+            document.getElementById("type_ALL").selected=true;
+            document.getElementById("generation_ALL").selected=true;
+            document.getElementById("legendary_ALL").selected=true;
+            document.getElementById("search_input").value='';
           })
         </script>
     </div>
@@ -990,10 +996,67 @@
           </div>
 
           <!-- Recommedation team -->
-          <div class="grid-cs-9 grid-ce-12 grid-r-10" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
+           <!-- Recommedation team -->
+           <div class="grid-cs-9 grid-ce-12 grid-r-10" style="overflow-y :yes; border: 1px solid black;border-radius: .125rem;">
             <div id="list_container" style="height:240px;overflow:scroll;overflow-y :yes">
               <div id="row_container" class="row">
                 <div id="recommendation_rows" class="col-12">
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);display:none;" id="Recommendation1">
+                    <div class="tile__icon">
+                      <img src="pic/sprites/1.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Bulbasaur</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);display:none;" id="Recommendation2">
+                    <div class="tile__icon">
+                      <img src="pic/sprites/1.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Bulbasaur</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);display:none;" id="Recommendation3" >
+                    <div class="tile__icon">
+                      <img src="pic/sprites/1.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Bulbasaur</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);display:none;" id="Recommendation4">
+                    <div class="tile__icon">
+                      <img src="pic/sprites/1.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Bulbasaur</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);display:none;" id="Recommendation5">
+                    <div class="tile__icon">
+                      <img src="pic/sprites/1.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Bulbasaur</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);display:none;" id="Recommendation6">
+                    <div class="tile__icon">
+                      <img src="pic/sprites/1.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Bulbasaur</p>
+                    </div>
+                  </entity>
+                  <entity class="tile m-0 level" style="border: 1px solid rgb(137, 137, 137);display:none;" id="Recommendation1">
+                    <div class="tile__icon">
+                      <img src="pic/sprites/1.png" width="50px" height="50px"></img>
+                    </div>
+                    <div class="tile__container">
+                      <p class="tile__title m-0">Bulbasaur</p>
+                    </div>
+                  </entity>
 
                 </div>
               </div>
@@ -1193,14 +1256,6 @@
         //console.log(btn_add_to_my_team);
         btn_add_to_comparing_left.addEventListener("click", Add_to_comparing_left);
         btn_add_to_comparing_right.addEventListener("click", Add_to_comparing_right);
-
-        // //Add listener to all pokemon container, listen to the team list, delete pokemon from list
-        // var grid_bottomleft = document.getElementById("grid_bottomleft");
-        // var comparing_containers = grid_bottomleft.getElementsByClassName("comparingcontainer");
-        // //console.log(team_containers);
-        // for(const element of comparing_containers){
-        //   element.addEventListener("click",Delete_from_comparing);
-        // }
 
       </script>
 

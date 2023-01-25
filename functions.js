@@ -79,20 +79,29 @@ function Show_featue(){
 
 }
 
-function Recreate_list(T,G,L){
-    console.log("jin lai han shu la ")
+function Recreate_list(T,G,L,W){
+    //console.log("jin lai han shu la ")
     var rows = document.getElementById("rows");
     var entities = rows.getElementsByTagName("entity");
-    console.log(entities);
+    //console.log(entities);
     for (const element of entities){
         Type_1 = element.getAttribute("Type_1");
         Type_2 = element.getAttribute("Type_2");
         Generation = element.getAttribute("Generation");
         isLegendary = element.getAttribute("isLegendary");
         if(L == "isLegendary"){L = "TRUE"};
-        if(L == "isnotLegendary"){L = "FALSE"};
-
-        if((Type_1==T || Type_2==T || T=="All") && (Generation==G || G=="All") && (isLegendary==L || L=="All")){
+        if(L == "isNotLegendary"){L = "FALSE"};
+        
+        pkName = element.getAttribute("Name").toLowerCase();
+        keyword = W.toLowerCase();
+        if((pkName.indexOf(keyword)!=- 1) || keyword==''){
+            namematch_Flag = true;
+        }
+        else{
+            namematch_Flag = false;
+        }
+        
+        if((Type_1==T || Type_2==T || T=="All") && (Generation==G || G=="All") && (isLegendary==L || L=="All") && namematch_Flag){
             element.setAttribute("style","border: 1px solid rgb(137, 137, 137);")
         }
         else{
@@ -222,6 +231,7 @@ function Redraw_comparing_chart(){
 
 function Create_recommendation_list(){
     // get pokemons of my team
+    console.log("我进来了");
     var my_pokemons = [];
     var grid_my_team = document.getElementById("grid_my_team");
     var containers = grid_my_team.getElementsByTagName("img");
@@ -248,33 +258,31 @@ function Create_recommendation_list(){
 
     // create recommendation list
     var result_list = []
-    var candidates = ["Goodra","Tyranitar","Dragonite","Breloom","Arcanine", "Garchomp","Pangoro"]
+    
+    var candidates = ["Goodra","Tyranitar","Dragonite","Breloom","Arcanine", "Garchomp","Pangoro","Slowbro","Gengar","Azumarill","Torkoal","Lucario","Volcarona"]
+    Math.round(Math.random()*10);
     for(const element of my_pokemons){
         result_list.push(element);
     }
 
     for(i = 6-result_list.length; i>0 ; i--){
-        result_list.push(candidates[i]);
+        result_list.push(candidates[Math.round(Math.random()*12)]);
     }
-
+    console.log(result_list);
+    
     var recommendation_rows = d3.select("#recommendation_rows");
+    var i = 1
     for(const element of result_list){
         var pokemon = document.getElementById(element);
 
         var img_Path = "pic/sprites/"+pokemon.getAttribute("Number")+".png";
         var Pk_Name = pokemon.getAttribute("Name");
 
-        var entity = recommendation_rows.append("entity");
-        entity.attr("class","tile m-0 level");
-        entity.attr("style","border: 1px solid rgb(137, 137, 137);");
-        
-        tile_icon = entity.insert("Eicon");
-        tile_icon.attr("class","tile__icon");
-        tile_icon.append("img").attr("src",img_Path).attr("width","50px").attr("height","50px");
-
-        tile_container = entity.append("Ename");
-        tile_container.attr("class","tile__container");
-        tile_container.append("p").attr("class","tile__title m-0").text(Pk_Name)
+        var R = recommendation_rows.select("#Recommendation"+i.toString());
+        R.attr("style","border: 1px solid rgb(137, 137, 137);");
+        R.select(".tile__icon").select("img").attr("src",img_Path);
+        R.select(".tile__container").select("p").text(Pk_Name);
+        i = i+1;
     }
 
 }
